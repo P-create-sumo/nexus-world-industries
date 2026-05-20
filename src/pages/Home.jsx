@@ -22,7 +22,6 @@ function Navbar() {
   }, []);
 
   const links = [
-    { label: 'Products', href: '#products' },
     { label: 'Features', href: '#features' },
     { label: 'Platform', href: '#platform' },
     { label: 'Security', href: '#security' },
@@ -172,157 +171,6 @@ function HeroSection() {
         </div>
       </div>
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#060810] to-transparent" />
-    </section>
-  );
-}
-
-// ─── PRODUCTS ─────────────────────────────────────────────────────────────────
-const wiProducts = [
-  {
-    emoji: '🎯',
-    name: 'ARES-OS',
-    domain: 'FPV / Ground Ops',
-    status: 'OPERATIONAL',
-    statusColor: 'text-green-400 border-green-400/30 bg-green-400/5',
-    desc: 'Ground Operations Platform for FPV Drone Teams. Real-time mission intelligence, telemetry fusion, and operator-first UX built for contested environments.',
-    tags: ['AIR', 'GROUND'],
-  },
-  {
-    emoji: '⚓',
-    name: 'POSEIDON-OS',
-    domain: 'Naval / ISR',
-    status: 'POC RELEASED',
-    statusColor: 'text-blue-400 border-blue-400/30 bg-blue-400/5',
-    desc: 'Maritime Port Intelligence Platform. Integrates AIS, Sentinel-2 satellite imagery, and radar data for persistent maritime situational awareness.',
-    tags: ['NAVAL', 'MARITIME'],
-  },
-  {
-    emoji: '🛰️',
-    name: 'SAM HUNTER',
-    domain: 'ISTAR / Counter-SAM',
-    status: 'POC RELEASED',
-    statusColor: 'text-blue-400 border-blue-400/30 bg-blue-400/5',
-    desc: 'Air Defense Target Acquisition System. YOLOv8-powered detection of SAM launchers and radar systems from SAR and optical imagery.',
-    tags: ['AIR', 'NAVAL'],
-  },
-  {
-    emoji: '🚀',
-    name: 'COUNTER-DRONE',
-    domain: 'Counter-UAS / Air Defense',
-    status: 'POC RELEASED',
-    statusColor: 'text-blue-400 border-blue-400/30 bg-blue-400/5',
-    desc: 'Interceptor Fleet Command & Control. Manages multi-vector drone interception with automated threat prioritization and engagement sequencing.',
-    tags: ['AIR'],
-  },
-  {
-    emoji: '🦏',
-    name: 'RHINO-OS',
-    domain: 'UGV / Ground Ops',
-    status: 'POC RELEASED',
-    statusColor: 'text-blue-400 border-blue-400/30 bg-blue-400/5',
-    desc: 'UGV Fleet Command & Control Platform. Autonomous ground vehicle coordination with real-time path planning and obstacle intelligence.',
-    tags: ['GROUND'],
-  },
-  {
-    emoji: '🌊',
-    name: 'TRITON-OS',
-    domain: 'USV/UUV / Maritime Ops',
-    status: 'POC RELEASED',
-    statusColor: 'text-blue-400 border-blue-400/30 bg-blue-400/5',
-    desc: 'Mission Intelligence Platform for USV/UUV operations. Subsurface and surface fleet orchestration with multi-domain sensor fusion.',
-    tags: ['MARITIME', 'UNDERWATER'],
-  },
-];
-
-const domainColors = {
-  AIR: 'text-cyan-400/80 bg-cyan-400/5 border-cyan-400/15',
-  GROUND: 'text-orange-400/80 bg-orange-400/5 border-orange-400/15',
-  NAVAL: 'text-blue-400/80 bg-blue-400/5 border-blue-400/15',
-  MARITIME: 'text-teal-400/80 bg-teal-400/5 border-teal-400/15',
-  UNDERWATER: 'text-indigo-400/80 bg-indigo-400/5 border-indigo-400/15',
-};
-
-function ProductsSection() {
-  return (
-    <section id="products" className="relative py-24 lg:py-32">
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-600/[0.025] to-transparent" />
-      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="max-w-2xl mx-auto text-center mb-16">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
-            <span className="inline-block text-xs font-mono text-blue-400 tracking-[0.2em] uppercase mb-4">World Industries Platforms</span>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-white mb-4">Six Platforms. One Mission.</h2>
-            <p className="text-white/50 text-base md:text-lg leading-relaxed">
-              From FPV drone ops to maritime port monitoring and subsurface intelligence — open-source, field-ready, built for operators.
-            </p>
-            <div className="flex items-center justify-center gap-2 mt-5 flex-wrap">
-              {['Air', 'Ground', 'Naval', 'Maritime', 'Underwater'].map(d => (
-                <span key={d} className="text-xs font-mono text-white/25 tracking-widest">· {d}</span>
-              ))}
-            </div>
-          </motion.div>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {wiProducts.map((product, index) => (
-            <motion.div
-              key={product.name}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-40px' }}
-              transition={{ duration: 0.6, delay: index * 0.08 }}
-              className="group relative rounded-2xl bg-white/3 border border-white/5 p-7 hover:border-blue-500/20 hover:bg-white/[0.04] transition-all duration-500 flex flex-col"
-            >
-              {/* Top row */}
-              <div className="flex items-start justify-between mb-5">
-                <div className="text-3xl">{product.emoji}</div>
-                <span className={`text-[10px] font-mono px-2.5 py-1 rounded-full border tracking-wider ${product.statusColor}`}>
-                  {product.status}
-                </span>
-              </div>
-
-              {/* Name + domain */}
-              <div className="mb-3">
-                <h3 className="text-lg font-bold text-white tracking-tight">{product.name}</h3>
-                <p className="text-xs font-mono text-white/35 mt-0.5 tracking-wider">{product.domain}</p>
-              </div>
-
-              {/* Description */}
-              <p className="text-sm text-white/45 leading-relaxed mb-5 flex-1">{product.desc}</p>
-
-              {/* Domain tags */}
-              <div className="flex items-center gap-2 flex-wrap">
-                {product.tags.map(tag => (
-                  <span key={tag} className={`text-[10px] font-mono px-2 py-0.5 rounded border tracking-widest ${domainColors[tag]}`}>
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Multi-domain coverage bar */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.3 }}
-          className="mt-12 rounded-2xl border border-white/5 bg-white/3 p-6"
-        >
-          <p className="text-xs font-mono text-white/25 uppercase tracking-widest text-center mb-5">Multi-Domain Coverage</p>
-          <div className="grid grid-cols-2 sm:grid-cols-5 gap-4">
-            {[
-              { domain: 'AIR', platforms: 'ARES-OS · Counter-Drone', color: 'text-cyan-400' },
-              { domain: 'GROUND', platforms: 'ARES-OS · RHINO-OS', color: 'text-orange-400' },
-              { domain: 'NAVAL', platforms: 'POSEIDON-OS · SAM Hunter', color: 'text-blue-400' },
-              { domain: 'MARITIME', platforms: 'POSEIDON-OS · TRITON-OS', color: 'text-teal-400' },
-              { domain: 'UNDERWATER', platforms: 'TRITON-OS', color: 'text-indigo-400' },
-            ].map(item => (
-              <div key={item.domain} className="text-center">
-                <p className={`text-xs font-bold font-mono tracking-widest ${item.color}`}>{item.domain}</p>
-                <p className="text-[10px] text-white/25 mt-1 leading-relaxed">{item.platforms}</p>
-              </div>
-            ))}
-          </div>
-        </motion.div>
-      </div>
     </section>
   );
 }
@@ -769,7 +617,6 @@ export default function Home() {
     <div className="min-h-screen bg-[#060810] text-white">
       <Navbar />
       <HeroSection />
-      <ProductsSection />
       <FeaturesSection />
       <PlatformSection />
       <SecuritySection />
