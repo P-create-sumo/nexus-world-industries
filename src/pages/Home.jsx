@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
 import {
   ArrowRight, Play, Network, Search, BrainCircuit,
   Shield, Workflow, BarChart3, Layers, Zap, Lock,
   Globe, ShieldCheck, Fingerprint, Server, FileKey,
-  Mail, Menu, X
+  Mail, Menu, X, Building2, Users, CheckCircle2, ChevronDown
 } from 'lucide-react';
 
 // ─── NAVBAR ───────────────────────────────────────────────────────────────────
@@ -360,38 +362,223 @@ function SecuritySection() {
   );
 }
 
-// ─── CTA ──────────────────────────────────────────────────────────────────────
+// ─── CONTACT / DEMO REQUEST ───────────────────────────────────────────────────
+const companySizes = ['1–50', '51–200', '201–1,000', '1,001–5,000', '5,000+'];
+const useCases = ['Threat Intelligence', 'Financial Investigation', 'Fraud Detection', 'Compliance & Audit', 'Competitive Intelligence', 'Other'];
+
 function CTASection() {
+  const [form, setForm] = useState({ name: '', email: '', company: '', size: '', useCase: '', message: '' });
+  const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    await new Promise(r => setTimeout(r, 1200));
+    setLoading(false);
+    setSubmitted(true);
+  };
+
+  const handleChange = (field, value) => setForm(prev => ({ ...prev, [field]: value }));
+
   return (
     <section id="cta" className="relative py-24 lg:py-32">
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-600/5 rounded-full blur-[150px]" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[500px] bg-blue-600/4 rounded-full blur-[150px]" />
+
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
-        <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}
-          className="relative rounded-3xl border border-white/5 bg-white/3 backdrop-blur-sm overflow-hidden">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-px bg-gradient-to-r from-transparent via-blue-500/50 to-transparent" />
-          <div className="px-8 py-16 md:px-16 md:py-20 text-center">
-            <span className="inline-block text-xs font-mono text-blue-400 tracking-[0.2em] uppercase mb-4">Get Started</span>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-white mb-4 max-w-2xl mx-auto leading-[1.1]">
-              Ready to Transform Your Intelligence Operations?
+        {/* Header */}
+        <div className="max-w-2xl mx-auto text-center mb-16">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
+            <span className="inline-block text-xs font-mono text-blue-400 tracking-[0.2em] uppercase mb-4">Contact Us</span>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-white mb-4">
+              Request a Demo
             </h2>
-            <p className="text-white/50 text-base md:text-lg leading-relaxed max-w-xl mx-auto mb-10">
-              Join the organizations that have already revolutionized how they discover, analyze, and act on critical information.
+            <p className="text-white/50 text-base md:text-lg leading-relaxed">
+              Speak with our team and see how NEXUS can transform your intelligence operations. We'll tailor the demo to your specific use case.
             </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Button size="lg" className="bg-blue-600 hover:bg-blue-500 text-white px-8 h-12 gap-2 group">
-                <Mail className="w-4 h-4" />
-                Request a Demo
-                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-              </Button>
-              <Button size="lg" variant="outline" className="border-white/10 text-white hover:bg-white/5 px-8 h-12">
-                Access Platform
-              </Button>
+          </motion.div>
+        </div>
+
+        <div className="grid lg:grid-cols-5 gap-10 lg:gap-16 items-start max-w-6xl mx-auto">
+          {/* Left: Info */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}
+            className="lg:col-span-2 space-y-8"
+          >
+            {/* What to expect */}
+            <div>
+              <h3 className="text-sm font-mono text-white/40 uppercase tracking-widest mb-5">What to expect</h3>
+              <div className="space-y-5">
+                {[
+                  { icon: Users, title: 'Personalized walkthrough', desc: 'A live demo tailored to your industry and intelligence requirements.' },
+                  { icon: Building2, title: 'Architecture review', desc: 'We discuss deployment options — cloud, on-premise, or air-gapped.' },
+                  { icon: CheckCircle2, title: 'Proof of concept', desc: 'We can run a rapid PoC on your own data within 2 weeks.' },
+                ].map((item) => (
+                  <div key={item.title} className="flex items-start gap-4">
+                    <div className="w-9 h-9 rounded-lg bg-blue-500/10 border border-blue-500/15 flex items-center justify-center shrink-0 mt-0.5">
+                      <item.icon className="w-4 h-4 text-blue-400" />
+                    </div>
+                    <div>
+                      <p className="text-sm font-semibold text-white">{item.title}</p>
+                      <p className="text-xs text-white/40 mt-1 leading-relaxed">{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
-            <p className="mt-8 text-xs text-white/20 font-mono">
-              No credit card required · Enterprise-grade security · Deploy in days
-            </p>
-          </div>
-        </motion.div>
+
+            {/* Response time badge */}
+            <div className="rounded-xl border border-white/5 bg-white/3 p-5">
+              <div className="flex items-center gap-2 mb-2">
+                <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+                <span className="text-xs font-mono text-green-400/80 tracking-wider uppercase">Response time</span>
+              </div>
+              <p className="text-white font-semibold">Within 24 hours</p>
+              <p className="text-xs text-white/30 mt-1">Our enterprise team responds to all inquiries within one business day.</p>
+            </div>
+
+            {/* Direct contact */}
+            <div>
+              <p className="text-xs font-mono text-white/25 uppercase tracking-widest mb-3">Direct contact</p>
+              <a href="mailto:enterprise@nexus-wi.com" className="flex items-center gap-2 text-sm text-white/50 hover:text-blue-400 transition-colors">
+                <Mail className="w-4 h-4" />
+                enterprise@nexus-wi.com
+              </a>
+            </div>
+          </motion.div>
+
+          {/* Right: Form */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.1 }}
+            className="lg:col-span-3"
+          >
+            <div className="relative rounded-2xl border border-white/5 bg-white/3 backdrop-blur-sm overflow-hidden">
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-px bg-gradient-to-r from-transparent via-blue-500/40 to-transparent" />
+
+              {submitted ? (
+                <div className="flex flex-col items-center justify-center text-center px-8 py-20">
+                  <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ type: 'spring', stiffness: 200 }}
+                    className="w-16 h-16 rounded-full bg-blue-500/10 border border-blue-500/20 flex items-center justify-center mb-6">
+                    <CheckCircle2 className="w-8 h-8 text-blue-400" />
+                  </motion.div>
+                  <h3 className="text-xl font-bold text-white mb-3">Request received</h3>
+                  <p className="text-white/50 text-sm leading-relaxed max-w-sm">
+                    Our enterprise team will reach out to <span className="text-blue-400">{form.email}</span> within 24 hours to schedule your personalized demo.
+                  </p>
+                </div>
+              ) : (
+                <form onSubmit={handleSubmit} className="p-8 space-y-5">
+                  {/* Name + Email */}
+                  <div className="grid sm:grid-cols-2 gap-4">
+                    <div className="space-y-1.5">
+                      <label className="text-xs font-mono text-white/30 uppercase tracking-wider">Full name *</label>
+                      <Input
+                        required
+                        placeholder="Jane Smith"
+                        value={form.name}
+                        onChange={e => handleChange('name', e.target.value)}
+                        className="bg-white/5 border-white/8 text-white placeholder:text-white/20 focus:border-blue-500/40 h-11"
+                      />
+                    </div>
+                    <div className="space-y-1.5">
+                      <label className="text-xs font-mono text-white/30 uppercase tracking-wider">Work email *</label>
+                      <Input
+                        required
+                        type="email"
+                        placeholder="jane@company.com"
+                        value={form.email}
+                        onChange={e => handleChange('email', e.target.value)}
+                        className="bg-white/5 border-white/8 text-white placeholder:text-white/20 focus:border-blue-500/40 h-11"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Company + Size */}
+                  <div className="grid sm:grid-cols-2 gap-4">
+                    <div className="space-y-1.5">
+                      <label className="text-xs font-mono text-white/30 uppercase tracking-wider">Organization *</label>
+                      <Input
+                        required
+                        placeholder="World Industries Ltd."
+                        value={form.company}
+                        onChange={e => handleChange('company', e.target.value)}
+                        className="bg-white/5 border-white/8 text-white placeholder:text-white/20 focus:border-blue-500/40 h-11"
+                      />
+                    </div>
+                    <div className="space-y-1.5">
+                      <label className="text-xs font-mono text-white/30 uppercase tracking-wider">Company size</label>
+                      <div className="relative">
+                        <select
+                          value={form.size}
+                          onChange={e => handleChange('size', e.target.value)}
+                          className="w-full h-11 bg-white/5 border border-white/8 text-white/70 rounded-md px-3 text-sm appearance-none focus:outline-none focus:border-blue-500/40 cursor-pointer"
+                        >
+                          <option value="" className="bg-[#060810]">Select range</option>
+                          {companySizes.map(s => <option key={s} value={s} className="bg-[#060810]">{s} employees</option>)}
+                        </select>
+                        <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-white/30 pointer-events-none" />
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Use case */}
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-mono text-white/30 uppercase tracking-wider">Primary use case</label>
+                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                      {useCases.map(uc => (
+                        <button
+                          type="button"
+                          key={uc}
+                          onClick={() => handleChange('useCase', uc)}
+                          className={`text-xs px-3 py-2.5 rounded-lg border transition-all duration-200 text-left ${
+                            form.useCase === uc
+                              ? 'border-blue-500/50 bg-blue-500/10 text-blue-300'
+                              : 'border-white/5 bg-white/3 text-white/40 hover:border-white/15 hover:text-white/60'
+                          }`}
+                        >
+                          {uc}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Message */}
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-mono text-white/30 uppercase tracking-wider">Tell us about your challenge</label>
+                    <Textarea
+                      placeholder="Describe your current data challenges, scale, or what you're hoping NEXUS can solve..."
+                      value={form.message}
+                      onChange={e => handleChange('message', e.target.value)}
+                      className="bg-white/5 border-white/8 text-white placeholder:text-white/20 focus:border-blue-500/40 min-h-[100px] resize-none"
+                    />
+                  </div>
+
+                  <Button
+                    type="submit"
+                    disabled={loading}
+                    className="w-full h-12 bg-blue-600 hover:bg-blue-500 text-white font-semibold gap-2 group transition-all"
+                  >
+                    {loading ? (
+                      <span className="flex items-center gap-2">
+                        <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                        Sending request...
+                      </span>
+                    ) : (
+                      <span className="flex items-center gap-2">
+                        Request Your Demo
+                        <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                      </span>
+                    )}
+                  </Button>
+
+                  <p className="text-xs text-white/20 text-center font-mono">
+                    By submitting, you agree to our Privacy Policy. No spam, ever.
+                  </p>
+                </form>
+              )}
+            </div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );
