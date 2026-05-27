@@ -1,0 +1,87 @@
+{
+  "_meta": {
+    "name": "NEXUS Alpha Test Dataset",
+    "version": "1.0",
+    "description": "Standard test subjects for NEXUS Alpha UAT. Use these entities to ensure consistent testing environments across testers.",
+    "created": "2025-05",
+    "confidentiality": "CONFIDENTIAL — Alpha Program Only"
+  },
+  "persons": [
+    {
+      "name": "Alexei Volkov",
+      "type": "Person",
+      "scenario": "Mid-level executive, suspected shell company ties",
+      "expected_risk_level": "HIGH",
+      "expected_risk_score_range": "51-70",
+      "test_notes": "Should surface corporate connections and potential offshore indicators"
+    },
+    {
+      "name": "Sarah Chen",
+      "type": "Person",
+      "scenario": "Tech startup founder, clean public profile",
+      "expected_risk_level": "LOW",
+      "expected_risk_score_range": "0-25",
+      "test_notes": "Should return minimal red flags, clean summary"
+    },
+    {
+      "name": "Marco Delgado",
+      "type": "Person",
+      "scenario": "Political figure, offshore accounts reported in press",
+      "expected_risk_level": "HIGH",
+      "expected_risk_score_range": "60-80",
+      "test_notes": "Should surface political exposure and financial risk indicators"
+    }
+  ],
+  "organizations": [
+    {
+      "name": "Meridian Capital Partners",
+      "type": "Organization",
+      "scenario": "Investment fund operating across multiple jurisdictions",
+      "expected_risk_level": "MEDIUM",
+      "expected_risk_score_range": "30-55",
+      "test_notes": "Should identify multi-jurisdiction structure as moderate risk factor"
+    },
+    {
+      "name": "Solaris Dynamics Ltd",
+      "type": "Organization",
+      "scenario": "Defense contractor with reported sanctioned country exposure",
+      "expected_risk_level": "CRITICAL",
+      "expected_risk_score_range": "75-100",
+      "test_notes": "Should flag sanctions exposure and defense sector risk"
+    },
+    {
+      "name": "GreenPath Foundation",
+      "type": "Organization",
+      "scenario": "NGO with transparent structure and public filings",
+      "expected_risk_level": "LOW",
+      "expected_risk_score_range": "0-25",
+      "test_notes": "Should return clean profile, low risk indicators"
+    }
+  ],
+  "domains": [
+    {
+      "name": "meridian-cap.io",
+      "type": "Domain",
+      "scenario": "Recently registered domain, privacy-protected WHOIS",
+      "expected_risk_level": "MEDIUM",
+      "expected_risk_score_range": "35-60",
+      "test_notes": "Should flag recent registration and WHOIS privacy as moderate indicators"
+    },
+    {
+      "name": "solarisdyn.com",
+      "type": "Domain",
+      "scenario": "Domain associated with flagged defense organization",
+      "expected_risk_level": "HIGH",
+      "expected_risk_score_range": "55-80",
+      "test_notes": "Should inherit risk from associated organization"
+    },
+    {
+      "name": "greenpath.org",
+      "type": "Domain",
+      "scenario": "Long-standing domain with clean history",
+      "expected_risk_level": "LOW",
+      "expected_risk_score_range": "0-20",
+      "test_notes": "Should return clean domain history and low risk score"
+    }
+  ]
+}

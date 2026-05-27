@@ -1,0 +1,10 @@
+name,type,scenario,expected_risk_level,expected_risk_score_range,test_notes
+Alexei Volkov,Person,Mid-level executive - suspected shell company ties,HIGH,51-70,Should surface corporate connections and potential offshore indicators
+Sarah Chen,Person,Tech startup founder - clean public profile,LOW,0-25,Should return minimal red flags and clean summary
+Marco Delgado,Person,Political figure - offshore accounts reported in press,HIGH,60-80,Should surface political exposure and financial risk indicators
+Meridian Capital Partners,Organization,Investment fund operating across multiple jurisdictions,MEDIUM,30-55,Should identify multi-jurisdiction structure as moderate risk factor
+Solaris Dynamics Ltd,Organization,Defense contractor with reported sanctioned country exposure,CRITICAL,75-100,Should flag sanctions exposure and defense sector risk
+GreenPath Foundation,Organization,NGO with transparent structure and public filings,LOW,0-25,Should return clean profile and low risk indicators
+meridian-cap.io,Domain,Recently registered domain - privacy-protected WHOIS,MEDIUM,35-60,Should flag recent registration and WHOIS privacy as moderate indicators
+solarisdyn.com,Domain,Domain associated with flagged defense organization,HIGH,55-80,Should inherit risk from associated organization
+greenpath.org,Domain,Long-standing domain with clean history,LOW,0-20,Should return clean domain history and low risk score
