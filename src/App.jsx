@@ -7,6 +7,8 @@ import { AuthProvider, useAuth } from '@/lib/AuthContext';
 import UserNotRegisteredError from '@/components/UserNotRegisteredError';
 // Add page imports here
 import Home from '@/pages/Home.jsx';
+import Dashboard from '@/pages/Dashboard.jsx';
+import QuickStart from '@/pages/QuickStart.jsx';
 
 const AuthenticatedApp = () => {
   const { isLoadingAuth, isLoadingPublicSettings, authError, navigateToLogin } = useAuth();
@@ -35,6 +37,8 @@ const AuthenticatedApp = () => {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
+      <Route path="/dashboard" element={<Dashboard />} />
+      <Route path="/quick-start" element={<QuickStart />} />
       <Route path="*" element={<PageNotFound />} />
     </Routes>
   );

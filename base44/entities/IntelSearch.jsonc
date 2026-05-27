@@ -1,0 +1,78 @@
+{
+  "name": "IntelSearch",
+  "type": "object",
+  "properties": {
+    "entity_name": {
+      "type": "string",
+      "description": "Name of the entity searched"
+    },
+    "entity_type": {
+      "type": "string",
+      "enum": [
+        "Person",
+        "Organization",
+        "Domain"
+      ],
+      "description": "Type of entity"
+    },
+    "summary": {
+      "type": "string",
+      "description": "AI-generated intelligence summary"
+    },
+    "risk_score": {
+      "type": "number",
+      "description": "Risk score 0-100"
+    },
+    "risk_level": {
+      "type": "string",
+      "enum": [
+        "LOW",
+        "MEDIUM",
+        "HIGH",
+        "CRITICAL"
+      ],
+      "description": "Risk classification"
+    },
+    "key_connections": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "List of key connections/relationships"
+    },
+    "red_flags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Identified risk indicators"
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Sources referenced"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Intelligence tags"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "completed",
+        "error"
+      ],
+      "default": "pending"
+    }
+  },
+  "required": [
+    "entity_name",
+    "entity_type"
+  ]
+}

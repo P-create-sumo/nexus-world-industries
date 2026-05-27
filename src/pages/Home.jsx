@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
+import { Link } from 'react-router-dom';
 import {
   ArrowRight, Play, Network, Search, BrainCircuit,
   Shield, Workflow, BarChart3, Layers, Zap, Lock,
@@ -150,10 +151,12 @@ function HeroSection() {
               Request a Demo
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
             </Button>
-            <Button size="lg" variant="outline" className="border-white/10 text-white hover:bg-white/5 px-8 h-12 gap-2" onClick={() => scrollTo('#platform')}>
-              <Play className="w-4 h-4" />
-              Explore Platform
-            </Button>
+            <Link to="/dashboard">
+              <Button size="lg" variant="outline" className="border-blue-500/30 text-blue-300 hover:bg-blue-500/10 hover:border-blue-500/50 px-8 h-12 gap-2">
+                <Play className="w-4 h-4" />
+                Launch Platform
+              </Button>
+            </Link>
           </motion.div>
 
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1, delay: 0.6 }}
