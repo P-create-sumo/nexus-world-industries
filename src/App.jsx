@@ -9,6 +9,7 @@ import UserNotRegisteredError from '@/components/UserNotRegisteredError';
 import Home from '@/pages/Home.jsx';
 import Dashboard from '@/pages/Dashboard.jsx';
 import QuickStart from '@/pages/QuickStart.jsx';
+import Community from '@/pages/Community.jsx';
 
 const AuthenticatedApp = () => {
   const { isLoadingAuth, isLoadingPublicSettings, authError, navigateToLogin } = useAuth();
@@ -39,6 +40,7 @@ const AuthenticatedApp = () => {
       <Route path="/" element={<Home />} />
       <Route path="/dashboard" element={<Dashboard />} />
       <Route path="/quick-start" element={<QuickStart />} />
+      <Route path="/community" element={<Community />} />
       <Route path="*" element={<PageNotFound />} />
     </Routes>
   );

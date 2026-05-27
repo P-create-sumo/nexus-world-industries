@@ -1,0 +1,44 @@
+{
+  "name": "CommunityPost",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Post title"
+    },
+    "content": {
+      "type": "string",
+      "description": "Post body content"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "qa",
+        "ideas",
+        "showcase"
+      ],
+      "description": "Post category"
+    },
+    "author_name": {
+      "type": "string",
+      "description": "Display name of the author"
+    },
+    "image_url": {
+      "type": "string",
+      "description": "Optional screenshot or image URL"
+    },
+    "upvotes": {
+      "type": "number",
+      "default": 0
+    },
+    "pinned": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "required": [
+    "title",
+    "content",
+    "category"
+  ]
+}

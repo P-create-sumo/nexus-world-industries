@@ -78,6 +78,11 @@ export default function Dashboard() {
             </div>
           </Link>
           <div className="flex items-center gap-3">
+            <Link to="/community">
+              <Button variant="ghost" className="text-white/40 hover:text-white gap-2 text-xs h-8">
+                Community
+              </Button>
+            </Link>
             <Link to="/quick-start">
               <Button variant="ghost" className="text-white/40 hover:text-white gap-2 text-xs h-8">
                 <BookOpen className="w-3.5 h-3.5" /> Quick Start
