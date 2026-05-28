@@ -1,4 +1,8 @@
-# NEXUS — Enterprise Intelligence Platform
+# 🚀 NEXUS Intelligence Platform
+
+> 📢 **BETA TESTERS WANTED:** Stiamo aprendo la piattaforma a un gruppo selezionato di tester esterni (Data Engineers, AI Architects, Power Users). Se vuoi testare l'orchestrazione agentica sui tuoi dati, apri una discussione nella sezione **Discussions** o candidati lasciando un feedback!
+
+---
 
 > **Transform raw data into operational intelligence at scale.**
 
